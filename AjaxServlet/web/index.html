@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form>
+            <label>Name</label><input type="text" name="name" id="nam"><br>
+            <label>id</label><input type="number" name="id" id="num"><br>
+            <label>Last Name</label><input type="text" name="lname" id="lname"><br>
+            <input type="button" id="bu" name="submit" value="submit">
+        </form>
+        <h1 id="hjj"></h1>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#bu').click(function(){
+             
+                    var name = $('#nam').val();
+                    var id = $('#num').val();
+                    var lname = $('#lname').val();
+             
+                    $.ajax({
+                        type : 'GET',
+                        url : 'SaveInfo',
+                        data : {
+                            name  : name,
+                            id : id,
+                            lname : lname,  
+                        },
+                        success : function(result)
+                        {
+                            $('#hjj').append(result);    
+                        },
+                        error : function(e)
+                        {
+                              $('#hjj').append("sorrruy");    
+                        }
+                    });
+                });
+            });
+            </script>
+    </body>
+</html>
